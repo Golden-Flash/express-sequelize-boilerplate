@@ -32,5 +32,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  User.beforeSave(async (user) => {
+    const id = uuidv4();
+    user.set({ id });
+    console.log(user);
+    return user;
+  });
+
   return User;
 };
